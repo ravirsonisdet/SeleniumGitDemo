@@ -133,7 +133,7 @@ public class SeleniumTest {
 	}
 
 	void tearDown() {
-		System.out.println("Execution ended");
+		System.out.println("Execution endeded");
 		driver.quit();
 		System.out.println("Teardown method ended");
 	}
