@@ -9,36 +9,36 @@ import org.openqa.selenium.WebDriver;
 
 public class TakeSceeenshot {
 
-      /**
+	/**
+	 * 
+	 * This function will take screenshot
+	 * 
+	 * @param webdriver
+	 * 
+	 * @param fileWithPath
+	 * 
+	 * @throws Exception
+	 * 
+	 */
 
-     * This function will take screenshot
+	public static void takeSnapShot(WebDriver webdriver, String fileWithPath) throws Exception {
 
-     * @param webdriver
+		// Convert web driver object to TakeScreenshot
 
-     * @param fileWithPath
+		TakesScreenshot scrShot = ((TakesScreenshot) webdriver);
 
-     * @throws Exception
+		// Call getScreenshotAs method to create image file
 
-     */
+		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
 
-    public static void takeSnapShot(WebDriver webdriver,String fileWithPath) throws Exception{
+		// Move image file to new destination
 
-        //Convert web driver object to TakeScreenshot
+		File DestFile = new File(fileWithPath);
 
-        TakesScreenshot scrShot =((TakesScreenshot)webdriver);
+		// Copy file at destination
 
-        //Call getScreenshotAs method to create image file
+		FileUtils.copyFile(SrcFile, DestFile);
 
-                File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-
-            //Move image file to new destination
-
-                File DestFile=new File(fileWithPath);
-
-                //Copy file at destination
-
-                FileUtils.copyFile(SrcFile, DestFile);
-
-    }
+	}
 
 }
