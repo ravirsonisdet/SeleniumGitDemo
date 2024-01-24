@@ -6,5 +6,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="D:/selenium webdriver/selenium-server-4.16.1.jar"/>
+	<classpathentry kind="lib" path="D:/selenium webdriver/Common io jar/commons-io-2.15.1-bin/commons-io-2.15.1/commons-io-2.15.1.jar"/>
+	<classpathentry kind="lib" path="D:/selenium webdriver/selenium-java-4.16.1/selenium-chrome-driver-4.16.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
