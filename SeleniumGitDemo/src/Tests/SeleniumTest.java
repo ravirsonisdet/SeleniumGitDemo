@@ -12,6 +12,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
@@ -19,17 +21,29 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class SeleniumTest {
 
-	WebDriver driver = new ChromeDriver();
+	WebDriver driver;
 	Properties props = new Properties();
 
-	void setup() throws Exception, IOException, InterruptedException {
+	void setup(String browser) throws Exception, IOException, InterruptedException {
 
 		// TODO Auto-generated method stub
-
 		System.out.println("Execution started");
 
-		System.setProperty("webdriver.chrome.driver",
-				"D:\\selenium webdriver\\CromeDriver\\chromedriver-win64\\chromedriver.exe");
+		if (browser.equalsIgnoreCase("Chrome")) {
+			System.setProperty("webdriver.chrome.driver",
+					"D:\\selenium webdriver\\CromeDriver\\chromedriver-win64\\chromedriver.exe");
+			driver = new ChromeDriver();
+		} else if (browser.equalsIgnoreCase("firefox")) {
+			driver = new FirefoxDriver();
+			System.setProperty("webdriver.geco.driver",
+					"D:\\selenium webdriver\\FirefoxDriver\\geckodriver-v0.34.0-win-aarch64\\geckodriver.exe");
+		} else if (browser.equalsIgnoreCase("Edge")) {
+			driver = new EdgeDriver();
+			System.setProperty("webdriver.edge.driver", "D:\\selenium webdriver\\edgedriver_win64\\msedgedriver.exe");
+		} else {
+			throw new Exception("Incorrect Browser");
+		}
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		driver.manage().window().maximize();
 		driver.get("https://shop.boeing.com/aviation-supply");
 		System.out.println("Title is : " + driver.getTitle());
@@ -98,7 +112,6 @@ public class SeleniumTest {
 
 		// click on a PO to open the PO in a new Tab
 		WebElement clickOnPO = driver.findElement(By.xpath("//*[@id=\"order_history\"]/tbody/tr/td[2]/div/p"));
-
 		clickOnPO.click();
 
 		// wait
@@ -128,7 +141,7 @@ public class SeleniumTest {
 	public static void main(String[] args) throws Exception {
 
 		SeleniumTest seleniumTest = new SeleniumTest();
-		seleniumTest.setup();
+		seleniumTest.setup("firefox");
 		seleniumTest.tearDown();
 		System.out.println("Program completed....");
 
