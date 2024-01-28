@@ -141,7 +141,7 @@ public class SeleniumTest {
 	public static void main(String[] args) throws Exception {
 
 		SeleniumTest seleniumTest = new SeleniumTest();
-		seleniumTest.setup("firefox");
+		seleniumTest.setup("CHROME");
 		seleniumTest.tearDown();
 		System.out.println("Program completed....");
 
