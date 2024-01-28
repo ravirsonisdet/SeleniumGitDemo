@@ -144,5 +144,7 @@ public class SeleniumTest {
 		seleniumTest.setup("CHROME");
 		seleniumTest.tearDown();
 		System.out.println("Program completed....");
+
 	}
+
 }
