@@ -143,8 +143,6 @@ public class SeleniumTest {
 		SeleniumTest seleniumTest = new SeleniumTest();
 		seleniumTest.setup("CHROME");
 		seleniumTest.tearDown();
-		System.out.println("Program completedd....");
-
+		System.out.println("Program completed....");
 	}
-	
 }
